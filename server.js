@@ -176,4 +176,9 @@ app.get('/api/rankings/pitching', (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`⚾  STRIKE Web → http://localhost:${PORT}`));
+// 로컬 실행 시에만 listen, Vercel 서버리스에서는 app export만 사용
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`⚾  STRIKE Web → http://localhost:${PORT}`));
+}
+
+module.exports = app;
