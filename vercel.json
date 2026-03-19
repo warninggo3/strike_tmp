@@ -11,7 +11,8 @@
           "style.css",
           "strike.db",
           "logo.glb",
-          "strike.png"
+          "strike.png",
+          "node_modules/sql.js/dist/sql-wasm.wasm"
         ]
       }
     }
