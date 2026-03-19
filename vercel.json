@@ -9,10 +9,9 @@
           "index.html",
           "app.js",
           "style.css",
-          "strike.db",
+          "data.json",
           "logo.glb",
-          "strike.png",
-          "node_modules/sql.js/dist/**"
+          "strike.png"
         ]
       }
     }
