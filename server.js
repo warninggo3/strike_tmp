@@ -16,13 +16,14 @@ app.use(express.static(__dirname, {
 }));
 
 // sql.js 초기화 (순수 JS — Vercel 네이티브 모듈 불필요)
+// wasmBinary로 직접 로드 → Vercel 경로 문제 방지
 let db = null;
-const dbReady = initSqlJs({
-  locateFile: file => path.join(__dirname, 'node_modules/sql.js/dist', file)
-}).then(SQL => {
+const dbReady = (async () => {
+  const wasmBinary = fs.readFileSync(require.resolve('sql.js/dist/sql-wasm.wasm'));
+  const SQL = await initSqlJs({ wasmBinary });
   const buf = fs.readFileSync(path.join(__dirname, 'strike.db'));
   db = new SQL.Database(buf);
-});
+})();
 
 // Helper: 모든 행을 객체 배열로 반환
 function all(sql, params = []) {

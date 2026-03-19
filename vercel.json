@@ -12,7 +12,7 @@
           "strike.db",
           "logo.glb",
           "strike.png",
-          "node_modules/sql.js/dist/sql-wasm.wasm"
+          "node_modules/sql.js/dist/**"
         ]
       }
     }
